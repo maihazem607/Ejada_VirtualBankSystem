@@ -33,4 +33,4 @@ build/
 .vscode/
 
 # Ignore application.properties in userService
-/userService/src/main/resources/application.properties
+/src/main/resources/application.properties
