@@ -80,10 +80,8 @@ public class UserServiceImp implements UserService {
     @Override
     public ProfileResponse getProfile (ProfileRequest profileRequest){
         User user = userRepository.findById(profileRequest.getUserId())
-                .orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND ,"Not Found", "User with ID"+profileRequest.getUserId()+"not found."
-                ));
-        ProfileResponse p =new ProfileResponse(user.getId(), user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName());
-        return p;
+                .orElseThrow(() -> new UserNotFoundException(profileRequest.getUserId()));
+        return new ProfileResponse(user.getId(), user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName());
     }
 
 

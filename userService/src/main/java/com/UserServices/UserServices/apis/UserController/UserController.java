@@ -42,16 +42,16 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public UserResponse registerNewUser(@Valid @RequestBody CreateUserRequest userRequest){
+    public ResponseEntity<UserResponse> registerNewUser(@Valid @RequestBody CreateUserRequest userRequest){
         UserResponse userResponse = userService.Register(userRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userResponse).getBody();
+        return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
 
     }
 
     @PostMapping("/login")
-    public LoginResponse Login(@Valid @RequestBody LoginUser loginUser){
+    public ResponseEntity<LoginResponse>Login(@Valid @RequestBody LoginUser loginUser){
         LoginResponse loginResponse =userService.Login(loginUser);
-        return ResponseEntity.status(HttpStatus.CREATED).body(loginResponse).getBody();
+        return ResponseEntity.ok(loginResponse);
     }
 
 
