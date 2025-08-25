@@ -1,5 +1,7 @@
 package com.AccountService.AccountService.apis.Resources.InRequest;
 
+import java.math.BigDecimal;
+
 import com.AccountService.AccountService.apis.validation.ValidUUID;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -20,8 +22,7 @@ public class AccountTransferRequest {
     private String toAccountId;
 
     @NotNull(message = "amount cannot be empty")
-    @NotBlank(message = "amount cannot be empty")
-    @Positive(message = "Transfer amount must be positive")
-    private Float amount;
+    @Positive(message = "Invalid transfer request")
+    private BigDecimal amount;
 
 }

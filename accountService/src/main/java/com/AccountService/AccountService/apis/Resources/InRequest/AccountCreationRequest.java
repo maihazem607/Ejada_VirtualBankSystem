@@ -1,5 +1,7 @@
 package com.AccountService.AccountService.apis.Resources.InRequest;
 
+import java.math.BigDecimal;
+
 import com.AccountService.AccountService.apis.validation.ValidUUID;
 import com.AccountService.AccountService.apis.validation.ValueOfEnum;
 import com.AccountService.AccountService.applications.enums.AccountType;
@@ -26,5 +28,5 @@ public class AccountCreationRequest {
     @NotNull(message = "initialBalance cannot be empty")
     @NotBlank(message = "initialBalance cannot be empty")
     @PositiveOrZero(message = "Initial balance must be zero or positive")
-    private Float initialBalance;
+    private BigDecimal initialBalance;
 }
