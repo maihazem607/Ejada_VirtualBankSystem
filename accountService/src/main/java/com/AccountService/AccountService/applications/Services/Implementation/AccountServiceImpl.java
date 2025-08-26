@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -51,10 +50,7 @@ public class AccountServiceImpl implements AccountService {
       // TODO: Add logic from transaction service after it's done
 
 
-        //update the UpdatedAt
-        fromAccount.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         accountRepo.save(fromAccount);
-        toAccount.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         accountRepo.save(toAccount);
 
         return new AccountTransferResponse("Account updated successfully.");
@@ -79,8 +75,6 @@ public class AccountServiceImpl implements AccountService {
         account.setAccountType(AccountType.valueOf(request.getAccountType()));
         account.setBalance(request.getInitialBalance());
         account.setStatus(AccountStatus.ACTIVE);
-        account.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-        account.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
 
         accountRepo.save(account);
 
