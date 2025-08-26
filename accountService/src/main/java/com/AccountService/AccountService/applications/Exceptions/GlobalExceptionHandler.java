@@ -1,6 +1,6 @@
-package com.AccountService.AccountService.applications.Exceptons;
+package com.AccountService.AccountService.applications.Exceptions;
 
-import com.AccountService.AccountService.apis.Dto.ErrorResponse;
+import com.AccountService.AccountService.apis.Resources.OutResponse.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

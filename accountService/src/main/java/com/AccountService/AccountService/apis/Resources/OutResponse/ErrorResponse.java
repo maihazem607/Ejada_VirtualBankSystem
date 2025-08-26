@@ -1,4 +1,4 @@
-package com.AccountService.AccountService.apis.Dto;
+package com.AccountService.AccountService.apis.Resources.OutResponse;
 
 
 import lombok.AllArgsConstructor;

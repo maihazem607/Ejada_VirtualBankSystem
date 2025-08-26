@@ -1,9 +1,6 @@
 package com.AccountService.AccountService.apis.Resources.OutResponse;
 
 import java.math.BigDecimal;
-
-import com.AccountService.AccountService.applications.enums.AccountStatus;
-import com.AccountService.AccountService.applications.enums.AccountType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +14,6 @@ public class AccountDetailResponse {
     private String accountId;
     private String accountNumber;
     private BigDecimal balance;
-    private AccountType accountType;
-    private AccountStatus status;
+    private String accountType;
+    private String status;
 }

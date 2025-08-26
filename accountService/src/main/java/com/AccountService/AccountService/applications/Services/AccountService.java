@@ -5,12 +5,12 @@ import com.AccountService.AccountService.apis.Resources.InRequest.AccountTransfe
 import com.AccountService.AccountService.apis.Resources.OutResponse.AccountDetailResponse;
 import com.AccountService.AccountService.apis.Resources.OutResponse.AccountResponse;
 import com.AccountService.AccountService.apis.Resources.OutResponse.AccountTransferResponse;
+import com.AccountService.AccountService.apis.Resources.OutResponse.AccountsListResponse;
 
-import java.util.List;
 
 public interface AccountService {
     AccountTransferResponse transferAmount(AccountTransferRequest request);
     AccountResponse createAccount(AccountCreationRequest request);
     AccountDetailResponse getAccountDetails(String accountId);
-    List<AccountDetailResponse> listUserAccounts(String userId);
+    AccountsListResponse listUserAccounts(String userId);
 }

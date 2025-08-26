@@ -5,15 +5,13 @@ import com.AccountService.AccountService.apis.Resources.InRequest.AccountTransfe
 import com.AccountService.AccountService.apis.Resources.OutResponse.AccountDetailResponse;
 import com.AccountService.AccountService.apis.Resources.OutResponse.AccountResponse;
 import com.AccountService.AccountService.apis.Resources.OutResponse.AccountTransferResponse;
+import com.AccountService.AccountService.apis.Resources.OutResponse.AccountsListResponse;
 import com.AccountService.AccountService.applications.Services.AccountService;
-
 import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
 public class AccountController {
@@ -40,8 +38,8 @@ public class AccountController {
     }
 
     @GetMapping("/users/{userId}/accounts")
-    public ResponseEntity<List<AccountDetailResponse>> listUserAccounts(@PathVariable String userId) {
-        List<AccountDetailResponse> response = accountService.listUserAccounts(userId);
+    public ResponseEntity<AccountsListResponse> listUserAccounts(@PathVariable String userId) {
+        AccountsListResponse response = accountService.listUserAccounts(userId);
         return ResponseEntity.ok(response);
     }
 }

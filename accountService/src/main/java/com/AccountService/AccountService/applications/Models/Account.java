@@ -27,6 +27,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(nullable = false)
     private UUID userId;
 
     @Column(unique = true, nullable = false, length = 20)
@@ -36,11 +37,11 @@ public class Account {
     @Column(nullable = false)
     private AccountType accountType;
 
-    @Column(precision = 15, scale = 2, columnDefinition = "DECIMAL(15,2) default 0.00")
+    @Column(precision = 15, scale = 2, columnDefinition = "DECIMAL(15,2) default 0.00", nullable = false)
     private BigDecimal balance;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(255) default 'ACTIVE'")
+    @Column(columnDefinition = "VARCHAR(255) default 'ACTIVE'", nullable = false)
     private AccountStatus status;
 
     @CreationTimestamp
