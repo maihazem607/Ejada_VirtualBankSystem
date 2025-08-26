@@ -20,13 +20,12 @@ public class AccountCreationRequest {
     @ValidUUID
     private String userId;
 
-    @NotNull(message = "accountType cannot be empty")
-    @NotBlank(message = "accountType cannot be empty")
-    @ValueOfEnum(enumClass = AccountType.class, message = "Account type must be either SAVINGS or CHECKING")
+    @NotNull(message = "Invalid account type or initial balance")
+    @NotBlank(message = "Invalid account type or initial balance")
+    @ValueOfEnum(enumClass = AccountType.class, message = "Invalid account type or initial balance")
     private String accountType;
 
-    @NotNull(message = "initialBalance cannot be empty")
-    @NotBlank(message = "initialBalance cannot be empty")
-    @PositiveOrZero(message = "Initial balance must be zero or positive")
+    @NotNull(message = "Invalid account type or initial balance")
+    @PositiveOrZero(message = "Invalid account type or initial balance")
     private BigDecimal initialBalance;
 }

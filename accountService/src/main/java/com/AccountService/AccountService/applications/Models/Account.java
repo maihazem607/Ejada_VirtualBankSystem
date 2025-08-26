@@ -11,6 +11,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
+import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -48,4 +49,24 @@ public class Account {
 
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    @PrePersist
+    private void generateAccountNumber() {
+        if (accountNumber == null) {
+            // Use the unique UUID to generate a base for the account number
+            long val = Math.abs(id.getMostSignificantBits());
+            String base = String.valueOf(val);
+
+            // Pad with random digits to ensure it's 20 digits long
+            SecureRandom random = new SecureRandom();
+            StringBuilder sb = new StringBuilder(20);
+            sb.append(base);
+            while (sb.length() < 20) {
+                sb.append(random.nextInt(10));
+            }
+
+            // Trim to exactly 20 digits
+            this.accountNumber = sb.substring(0, 20);
+        }
+    }
 }

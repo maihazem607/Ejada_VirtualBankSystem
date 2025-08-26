@@ -7,11 +7,17 @@ import com.AccountService.AccountService.apis.Resources.OutResponse.AccountRespo
 import com.AccountService.AccountService.apis.Resources.OutResponse.AccountTransferResponse;
 import com.AccountService.AccountService.applications.Exceptons.AccountNotFoundException;
 import com.AccountService.AccountService.applications.Exceptons.InvalidTransferRequestException;
+import com.AccountService.AccountService.applications.Exceptons.UserNotFoundException;
 import com.AccountService.AccountService.applications.Models.Account;
 import com.AccountService.AccountService.applications.Repositories.AccountRepo;
 import com.AccountService.AccountService.applications.Services.AccountService;
+import com.AccountService.AccountService.applications.dto.UserProfileResponse;
+import com.AccountService.AccountService.applications.enums.AccountType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +27,9 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepo accountRepo;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Override
     public AccountTransferResponse transferAmount(AccountTransferRequest request){
@@ -41,7 +50,24 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountResponse createAccount(AccountCreationRequest request) {
-        return new AccountResponse();
+        String userId = request.getUserId();
+        String url = "http://localhost:8090/users/" + userId + "/profile";
+
+        try {
+            restTemplate.getForObject(url, UserProfileResponse.class);
+        } catch (HttpClientErrorException.NotFound e) {
+            throw new UserNotFoundException();
+        }
+
+        Account account = new Account();
+        account.setUserId(UUID.fromString(userId));
+        account.setAccountType(AccountType.valueOf(request.getAccountType()));
+        account.setBalance(request.getInitialBalance());
+
+        accountRepo.save(account);
+
+        return new AccountResponse(account.getId().toString(),
+        account.getAccountNumber().toString(),"Account created successfully.");
     }
 
     @Override
