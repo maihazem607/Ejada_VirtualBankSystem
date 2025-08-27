@@ -47,11 +47,8 @@ public class AccountServiceImpl implements AccountService {
             throw new InvalidTransferRequestException();
         }
 
-      // TODO: Add logic from transaction service after it's done
-
-
-        accountRepo.save(fromAccount);
-        accountRepo.save(toAccount);
+        fromAccount.setBalance(fromAccount.getBalance().subtract(request.getAmount()));
+        toAccount.setBalance(toAccount.getBalance().add(request.getAmount()));
 
         return new AccountTransferResponse("Account updated successfully.");
     }

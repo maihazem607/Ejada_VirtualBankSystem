@@ -15,4 +15,6 @@ public interface AccountRepository extends JpaRepository<Account, UUID> {
     List<Account> findByUserId(UUID userUUID);
 
     List<Account> findByStatusAndUpdatedAtBefore(AccountStatus status, Timestamp timestamp);
+
+    List<Account> findByStatus(AccountStatus status);
 }
