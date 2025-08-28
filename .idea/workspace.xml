@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23809d48-4230-41aa-af19-1c098f05038a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/apis/Resources/OutResponse/DashboardResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/apis/Resources/OutResponse/DashboardResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/security/SecurityConfig.java" beforeDir="false" />
-    </list>
+    <list default="true" id="23809d48-4230-41aa-af19-1c098f05038a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +24,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.AccountServiceApplication.executor": "Run",
+    "Application.BFFServiceApplication.executor": "Run",
+    "Application.TransactionServiceApplication.executor": "Run",
     "Application.UserServicesApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
