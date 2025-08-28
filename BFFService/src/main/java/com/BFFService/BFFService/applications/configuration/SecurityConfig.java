@@ -1,4 +1,4 @@
-package com.BFFService.BFFService.applications.security;
+package com.BFFService.BFFService.applications.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(" /bff/dashboard/{userId}").permitAll()
+                        .requestMatchers("/bff/dashboard/{userId}").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());

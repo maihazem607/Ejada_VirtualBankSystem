@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="23809d48-4230-41aa-af19-1c098f05038a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/apis/Resources/OutResponse/DashboardResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/apis/Resources/OutResponse/DashboardResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/security/SecurityConfig.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="31u2rl5kvR89WMgiyA8PxvhBsZw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.UserServicesApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/maiha/OneDrive/Documents/GitHub/Ejada_VirtualBankSystem/userService/src/main"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maiha\OneDrive\Documents\GitHub\Ejada_VirtualBankSystem\userService\src\main" />
+      <recent name="C:\Users\maiha\OneDrive\Documents\GitHub\Ejada_VirtualBankSystem\BFFService\src\main" />
+      <recent name="C:\Users\maiha\OneDrive\Documents\GitHub\Ejada_VirtualBankSystem\accountService\src\main" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23809d48-4230-41aa-af19-1c098f05038a" name="Changes" comment="" />
+      <created>1756359841654</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756359841654</updated>
+    </task>
+    <servers />
+  </component>
+</project>
