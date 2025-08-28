@@ -3,150 +3,165 @@ package applications.Services.TransactionServiceImp;
 
 import apis.Resources.InRequest.TransferExecutionRequest;
 import apis.Resources.InRequest.TransferInitiationRequest;
-import apis.Resources.OutResponse.TransactionHistoryResponse;
-import apis.Resources.OutResponse.TransferExecutionResponse;
-import apis.Resources.OutResponse.TransferInitiationResponse;
-import applications.Exceptons.InvalidUserDataException;
+import apis.Resources.OutResponse.TransactionDetail;
+import apis.Resources.OutResponse.TransferResponse;
+import applications.Exceptions.InvalidTransferRequestException;
+import applications.Exceptions.NoTransactionsFound;
+import applications.Exceptions.TransactionFailedException;
+import applications.Exceptions.TransactionNotFoundException;
 import applications.Models.Transaction;
-import applications.Models.enums.TransactionStatus;
 import applications.Repositories.TransactionRepository;
-import applications.Services.AccountService;
 import applications.Services.TransactionService;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import applications.dto.AccountDetailResponse;
+import applications.dto.AccountTransferRequest;
+import applications.dto.AccountTransferResponse;
+import applications.enums.TransactionStatus;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
 
-@Data
 
-@RequiredArgsConstructor
+
 @Service
 public class TransactionServiceImp implements TransactionService {
 
     @Autowired
-    private  final TransactionRepository transactions;
+    private  TransactionRepository transactions;
+
     @Autowired
-    private  final AccountService accountService;
+    private RestTemplate restTemplate;
+
 
     @Override
     @Transactional
-    public TransferInitiationResponse initiateTransfer(TransferInitiationRequest req) {
+    public TransferResponse initiateTransfer(TransferInitiationRequest req) {
 
         if (req.getFromAccountId() != null && req.getFromAccountId().equals(req.getToAccountId())) {
-            throw new InvalidUserDataException(HttpStatus.BAD_REQUEST, "Invalid Data",
-                    "From and To accounts must be different.");
+            throw new InvalidTransferRequestException();
         }
-        if (!accountService.exists(req.getFromAccountId()) || !accountService.exists(req.getToAccountId())) {
-            throw new InvalidUserDataException(HttpStatus.BAD_REQUEST, "Invalid Data",
-                    "Invalid 'from' or 'to' account ID.");
-        }
-        if (req.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
-            throw new InvalidUserDataException(HttpStatus.BAD_REQUEST, "Invalid Data",
-                    "Amount must be > 0.");
-        }
-        if (req.getFromAccountId().equals(req.getToAccountId()))
-            throw new InvalidUserDataException(HttpStatus.BAD_REQUEST, "Invalid Data", "From and To accounts must be different.");
 
-        // Create INITIATED transaction
-        Transaction tx = Transaction.initiated(
-                req.getFromAccountId(),
-                req.getToAccountId(),
+        if (req.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new InvalidTransferRequestException();
+        }
+
+        //Check if account exists and the from has sufficient funds
+
+        try {
+           restTemplate.getForObject("http://localhost:8091/accounts/" + req.getFromAccountId(), AccountDetailResponse.class);
+           restTemplate.getForObject("http://localhost:8091/accounts/" + req.getToAccountId(), AccountDetailResponse.class);
+        
+        } catch (HttpClientErrorException.NotFound e) {
+            throw new InvalidTransferRequestException();
+        }
+        
+
+
+        Transaction transaction = Transaction.initiated(
+                UUID.fromString(req.getFromAccountId()),
+                UUID.fromString(req.getToAccountId()),
                 req.getAmount(),
                 req.getDescription()
         );
-        transactions.save(tx);
-        return new TransferInitiationResponse(
-                tx.getId().toString(),
-                tx.getStatus().name(),
-                tx.getCreatedAt().toString()
-        );
+
+       transactions.save(transaction);
+
+       return new TransferResponse(transaction.getId().toString(), transaction.getStatus().name(), transaction.getTimestamp().toInstant().toString());
     }
 
-//
-//    @Override
-//    @Transactional
-//    public TransferExecutionResponse executeTransfer(TransferExecutionRequest transaction) {
-//        Transaction tx = transactions.findById(transaction.getTransactionId())
-//                .orElseThrow(() -> new InvalidUserDataException(
-//                        HttpStatus.BAD_REQUEST, "Bad Request", "Invalid 'from' or 'to' account ID."));
-//
-//        if (tx.getStatus() != TransactionStatus.INITIATED) {
-//            throw new InvalidUserDataException(
-//                    HttpStatus.BAD_REQUEST, "Bad Request",
-//                    "Transaction is not in INITIATED state.");
-//        }
-//        transactions.save(tx);
-//
-//        return new TransferExecutionResponse(
-//                tx.getId().toString(), tx.getStatus().name(), Instant.now().toString());
-//    }
-//
-
-
-
     @Override
-    @Transactional
-    public TransferExecutionResponse executeTransfer(TransferExecutionRequest transaction) {
-        Transaction tx = transactions.findById(transaction.getTransactionId()).orElseThrow(() ->
-                new InvalidUserDataException(HttpStatus.BAD_REQUEST, "Bad Request",
-                        "Invalid 'from' or 'to' account ID."));
+    @Transactional(noRollbackFor = TransactionFailedException.class)
+    public TransferResponse executeTransfer(TransferExecutionRequest req) {
 
-        if (tx.getStatus() != TransactionStatus.INITIATED) {
-            // idempotency: if already executed, just return current terminal state
-            return new TransferExecutionResponse(  tx.getId().toString(), tx.getStatus().name(), tx.getCreatedAt().toString());
+        //Check Transaction ID exists
+        Transaction transaction = transactions.findById(UUID.fromString(req.getTransactionId()))
+                .orElseThrow(TransactionNotFoundException::new);
+
+        //Check if Transaction is in INITIATED status
+        if (transaction.getStatus() != TransactionStatus.INITIATED) {
+            throw new InvalidTransferRequestException();
         }
+        //Call Account Service to perform the transfer
+        AccountTransferRequest accountTransferRequest = new AccountTransferRequest(
+                transaction.getFromAccountId().toString(),
+                transaction.getToAccountId().toString(),
+                transaction.getAmount()
+        );
+
+        HttpEntity<AccountTransferRequest> requestEntity = new HttpEntity<>(accountTransferRequest);
+        String url = "http://localhost:8091/accounts/transfer";
 
         try {
-            accountService.debit(tx.getFromAccountId(), tx.getAmount()); // may throw InsufficientFundsException
-            accountService.credit(tx.getToAccountId(), tx.getAmount());
-
-            tx.markSuccess();
-            transactions.save(tx);
-
-            return new TransferExecutionResponse(
-                    tx.getId().toString(), tx.getStatus().name(), tx.getCreatedAt().toString()
+            ResponseEntity<AccountTransferResponse> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.PUT,
+                    requestEntity,
+                    AccountTransferResponse.class
             );
 
-        } catch (InvalidUserDataException  e) {
-            tx.markFailed(e.getMessage());
-            transactions.save(tx);
-            throw e; // mapped to 400 by advice
-        } catch (RuntimeException e) {
-            tx.markFailed("Unexpected error during execution");
-            transactions.save(tx);
-            throw e; // you can map to 500 if you like
+            if (response.getStatusCode().is2xxSuccessful()) {
+                transaction.markSuccess();
+                transactions.save(transaction);
+                return new TransferResponse(transaction.getId().toString(), transaction.getStatus().name(), transaction.getTimestamp().toInstant().toString());
+            } else {
+                transaction.markFailed();
+                transactions.save(transaction);
+                throw new TransactionFailedException();
+            }
+        } catch (Exception e) {
+            transaction.markFailed();
+            transactions.save(transaction);
+            throw new TransactionFailedException();
         }
     }
 
 
     @Override
-    public List<TransactionHistoryResponse> getAccountTransactions(UUID accountId) {
-        var list = transactions.findByFromAccountIdOrToAccountIdOrderByCreatedAtDesc(accountId, accountId);
-        if (list.isEmpty()) {
-            throw new InvalidUserDataException(HttpStatus.NOT_FOUND, "Not Found",
-                    "No transactions found for account ID " + accountId + ".");
+    public List<TransactionDetail> getAccountTransactions(String accountId) {
+        UUID accountUuid = UUID.fromString(accountId);
+        List<Transaction> accountTransactions = transactions.findByFromAccountIdOrToAccountId(accountUuid, accountUuid);
+
+        if (accountTransactions.isEmpty()) {
+            throw new NoTransactionsFound(accountId);
         }
-        return list.stream().map(t ->
-                new TransactionHistoryResponse(
-                        t.getId(),
-                        t.getFromAccountId(),
-                        t.getToAccountId(),
-                        t.getAmount(),
-                        t.getDescription(),
-                        t.getCreatedAt(),
-                        t.getDeliveryStatus().name()
-                )
-        ).toList();
+
+        return accountTransactions.stream()
+                .map(transaction -> {
+                    BigDecimal amount = transaction.getAmount();
+                    String deliveryStatus;
+
+                    if (transaction.getStatus() == TransactionStatus.FAILED) {
+                        deliveryStatus = "FAILED";
+                    } else if (transaction.getFromAccountId().equals(accountUuid)) {
+                        // Outgoing transaction
+                        amount = amount.negate();
+                        deliveryStatus = "SENT";
+                    } else {
+                        // Incoming transaction
+                        deliveryStatus = "DELIVERED";
+                    }
+
+                    return new TransactionDetail(
+                            transaction.getId().toString(),
+                            transaction.getFromAccountId().toString(),
+                            transaction.getToAccountId().toString(),
+                            amount,
+                            transaction.getDescription(),
+                            transaction.getTimestamp().toInstant().toString(),
+                            deliveryStatus
+                    );
+                })
+                .toList();
     }
 
 }

@@ -4,17 +4,15 @@ package applications.Services;
 
 import apis.Resources.InRequest.TransferExecutionRequest;
 import apis.Resources.InRequest.TransferInitiationRequest;
-import apis.Resources.OutResponse.TransactionHistoryResponse;
-import apis.Resources.OutResponse.TransferExecutionResponse;
-import apis.Resources.OutResponse.TransferInitiationResponse;
+import apis.Resources.OutResponse.TransactionDetail;
+import apis.Resources.OutResponse.TransferResponse;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public interface TransactionService {
-//
-    public TransferInitiationResponse initiateTransfer(TransferInitiationRequest req) ;
-    public TransferExecutionResponse executeTransfer(TransferExecutionRequest req);
-    public List<TransactionHistoryResponse> getAccountTransactions(UUID accountId);}
+
+    public TransferResponse initiateTransfer(TransferInitiationRequest req) ;
+    public TransferResponse executeTransfer(TransferExecutionRequest req);
+    public List<TransactionDetail> getAccountTransactions(String accountId);
+}

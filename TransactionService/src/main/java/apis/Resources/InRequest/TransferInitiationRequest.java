@@ -4,18 +4,21 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
 import java.math.BigDecimal;
-import java.util.UUID;
+import apis.validation.ValidUUID;
+
 @Data
 public class TransferInitiationRequest {
 
-
     @NotNull(message = "fromAccountId is required")
-    private UUID fromAccountId;
+    @NotBlank(message = "fromAccountId is required")
+    @ValidUUID
+    private String fromAccountId;
 
+    @NotBlank(message = "toAccountId is required")
     @NotNull(message = "toAccountId is required")
-    public UUID toAccountId;
+    @ValidUUID
+    public String toAccountId;
 
     @NotNull(message = "Amount is required")
     @DecimalMin("0.01")
