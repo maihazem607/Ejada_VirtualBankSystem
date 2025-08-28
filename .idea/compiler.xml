@@ -23,6 +23,7 @@
         </processorPath>
         <module name="TransactionService" />
         <module name="UserServices" />
+
       </profile>
     </annotationProcessing>
   </component>

@@ -49,7 +49,6 @@ public class AccountServiceImpl implements AccountService {
 
         fromAccount.setBalance(fromAccount.getBalance().subtract(request.getAmount()));
         toAccount.setBalance(toAccount.getBalance().add(request.getAmount()));
-
         accountRepo.save(fromAccount);
         accountRepo.save(toAccount);
         return new AccountTransferResponse("Account updated successfully.");
