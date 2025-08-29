@@ -4,19 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23809d48-4230-41aa-af19-1c098f05038a" name="Changes" comment="" />
+    <list default="true" id="23809d48-4230-41aa-af19-1c098f05038a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TransactionService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TransactionService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TransactionService/src/main/java/apis/Controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TransactionService/src/main/java/apis/Controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TransactionService/src/main/java/applications/Exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/TransactionService/src/main/java/applications/Exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TransactionService/src/main/java/applications/Services/TransactionServiceImp/TransactionServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/TransactionService/src/main/java/applications/Services/TransactionServiceImp/TransactionServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TransactionService/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/AccountService/AccountService/apis/AccountController/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/AccountService/AccountService/apis/AccountController/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/AccountService/AccountService/applications/Exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/AccountService/AccountService/applications/Exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/userService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/apis/UserController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/apis/UserController/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/Exceptons/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/Exceptons/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/configration/SecurityConfig.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="31u2rl5kvR89WMgiyA8PxvhBsZw" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,6 +50,7 @@
   "keyToString": {
     "Application.AccountServiceApplication.executor": "Run",
     "Application.BFFServiceApplication.executor": "Run",
+    "Application.LoggingApplication.executor": "Run",
     "Application.TransactionServiceApplication.executor": "Run",
     "Application.UserServicesApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -33,15 +58,92 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/maiha/OneDrive/Documents/GitHub/Ejada_VirtualBankSystem/userService/src/main"
+    "last_opened_file_path": "C:/Users/DELL/Downloads/New folder (6)/Ejada_VirtualBankSystem/TransactionService/src/main/java/applications",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\maiha\OneDrive\Documents\GitHub\Ejada_VirtualBankSystem\userService\src\main" />
-      <recent name="C:\Users\maiha\OneDrive\Documents\GitHub\Ejada_VirtualBankSystem\BFFService\src\main" />
-      <recent name="C:\Users\maiha\OneDrive\Documents\GitHub\Ejada_VirtualBankSystem\accountService\src\main" />
+      <recent name="C:\Users\DELL\Downloads\New folder (6)\Ejada_VirtualBankSystem\TransactionService\src\main\java\applications" />
+      <recent name="C:\Users\DELL\Downloads\New folder (6)\Ejada_VirtualBankSystem\TransactionService\src\main" />
+      <recent name="C:\Users\DELL\Downloads\New folder (6)\Ejada_VirtualBankSystem\accountService\src\main" />
+      <recent name="C:\Users\DELL\Downloads\New folder (6)\Ejada_VirtualBankSystem\accountService\src\main\java\com\AccountService\AccountService\applications" />
+      <recent name="C:\Users\DELL\Downloads\New folder (6)\Ejada_VirtualBankSystem\userService\src\main\java\com\UserServices\UserServices\applications" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\Downloads\New folder (6)\Ejada_VirtualBankSystem" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="applications.configuration" />
+      <recent name="com.AccountService.AccountService.applications.configuration" />
+      <recent name="com.UserServices.UserServices.applications.security" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.TransactionServiceApplication">
+    <configuration name="AccountServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.AccountService.AccountService.AccountServiceApplication" />
+      <module name="AccountService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.AccountService.AccountService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoggingApplication" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.Logging.Logging.LoggingApplication" />
+      <module name="Logging" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.TransactionService.TransactionService.TransactionServiceApplication" />
+      <module name="TransactionService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.TransactionService.TransactionService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServicesApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.UserServices.UserServices.UserServicesApplication" />
+      <module name="UserServices (2)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.UserServices.UserServices.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.LoggingApplication" />
+      <item itemvalue="Application.TransactionServiceApplication" />
+      <item itemvalue="Application.AccountServiceApplication" />
+      <item itemvalue="Application.UserServicesApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TransactionServiceApplication" />
+        <item itemvalue="Application.AccountServiceApplication" />
+        <item itemvalue="Application.UserServicesApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -52,5 +154,16 @@
       <updated>1756359841654</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
