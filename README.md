@@ -1,4 +1,4 @@
-<img width="1360" height="773" alt="image" src="https://github.com/user-attachments/assets/9fd1cfd3-8821-41c6-b0c7-4d0533780d23" />﻿# Virtual Bank System
+# Virtual Bank System
 
 A microservices-based virtual banking system featuring a Backend for Frontend (BFF) and WSO2 API Gateway. This project demonstrates a modern, scalable application architecture.
 
@@ -181,4 +181,5 @@ Note: The request/response bodies shown below are only examples to illustrate th
 ### BFF Service (Port: 8093)
 
 - **Get Dashboard**: `GET` `http://localhost:8093/bff/dashboard/{userId}`
+
 
