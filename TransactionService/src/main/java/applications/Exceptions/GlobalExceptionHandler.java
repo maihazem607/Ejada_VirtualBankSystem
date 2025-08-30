@@ -1,6 +1,8 @@
 package applications.Exceptions;
 
 
+import applications.producer.RequestLoggerProducer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -13,6 +15,9 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @Autowired
+    RequestLoggerProducer requestLoggerProducer;
+
     @ExceptionHandler(ApplicationException.class)
     public ResponseEntity<ErrorResponse> handleApplicationException(ApplicationException ex) {
         ErrorResponse error = new ErrorResponse(
@@ -21,6 +26,7 @@ public class GlobalExceptionHandler {
                 ex.getErrorCode(),
                 ex.getMessage()
         );
+        requestLoggerProducer.log(error.toString(),"response");
         return new ResponseEntity<>(error, ex.getHttpStatus());
     }
 
@@ -33,6 +39,7 @@ public class GlobalExceptionHandler {
                 "INTERNAL_SERVER_ERROR",
                 "INTERNAL_ERROR"
         );
+        requestLoggerProducer.log(error.toString(),"response");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -46,7 +53,7 @@ public class GlobalExceptionHandler {
         body.put("message", "Validation failed");
         body.put("status", HttpStatus.BAD_REQUEST.value());
         body.put("errors", errors);
-
+        requestLoggerProducer.log(errors.toString(),"response");
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 }
