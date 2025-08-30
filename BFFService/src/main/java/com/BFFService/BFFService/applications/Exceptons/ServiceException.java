@@ -7,4 +7,12 @@ public class ServiceException extends ApplicationException{
     public ServiceException(){
         super("INTERNAL_SERVER_ERROR",HttpStatus.INTERNAL_SERVER_ERROR, "Failed to retrieve dashboard data due to an issue with downstream services.");
     }
+
+    public ServiceException(String s, int value) {
+        super("INTERNAL_SERVER_ERROR", HttpStatus.valueOf(value),s);
+    }
+
+    public ServiceException(String s) {
+        super("INTERNAL_SERVER_ERROR",HttpStatus.INTERNAL_SERVER_ERROR,s);
+    }
 }

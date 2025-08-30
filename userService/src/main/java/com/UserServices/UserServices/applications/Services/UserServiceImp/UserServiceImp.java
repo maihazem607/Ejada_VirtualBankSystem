@@ -10,17 +10,12 @@ import com.UserServices.UserServices.applications.Exceptons.UnAuthorizedExceptio
 import com.UserServices.UserServices.applications.Exceptons.UserAlreadyExistsException;
 import com.UserServices.UserServices.applications.Exceptons.UserNotFoundException;
 import com.UserServices.UserServices.applications.Models.User;
-import com.UserServices.UserServices.applications.Repositories.UserLoginEventRepo;
 import com.UserServices.UserServices.applications.Repositories.UserRepo;
-import com.UserServices.UserServices.applications.Services.LoginServices;
 import com.UserServices.UserServices.applications.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
-import java.util.Optional;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -28,11 +23,6 @@ public class UserServiceImp implements UserService {
     @Autowired
     private UserRepo userRepository;
 
-    @Autowired
-    private UserLoginEventRepo userLoginEventRepo;
-
-    @Autowired
-    private LoginServices loginServices;
 
     @Autowired
     private PasswordEncoder encoder;
@@ -70,10 +60,8 @@ public class UserServiceImp implements UserService {
 
         if (encoder.matches(loginUser.getPassword(), user.getPassword()))
         {   LoginResponse loginResponse=new LoginResponse(user.getId(), user.getUsername());
-            loginServices.recordLogin(user,true);
             return  loginResponse;
         }else{
-            loginServices.recordLogin(user,false);
             throw new UnAuthorizedException("Invalid username or password.");
         }
     }
