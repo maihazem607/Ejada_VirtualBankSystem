@@ -11,7 +11,7 @@ A microservices-based virtual banking system featuring a Backend for Frontend (B
 
 ## Microservices
 
-### 1. User Service
+### 1. User Service (Port: 8090)
 
 Manages user registration, authentication, and profiles.
 
@@ -19,7 +19,7 @@ Manages user registration, authentication, and profiles.
 - `POST /users/login`
 - `GET /users/{userId}/profile`
 
-### 2. Account Service
+### 2. Account Service (Port: 8091)
 
 Manages user bank accounts, balances, and status.
 
@@ -29,7 +29,7 @@ Manages user bank accounts, balances, and status.
 - `PUT /accounts/transfer`
 - **Scheduled Job**: Inactivates accounts with no transactions for more than 24 hours (runs hourly).
 
-### 3. Transaction Service
+### 3. Transaction Service (Port: 8092)
 
 Handles financial transactions and history.
 
@@ -38,11 +38,16 @@ Handles financial transactions and history.
 - `GET /accounts/{accountId}/transactions`
 
 
-### 4. BFF Service
+### 4. BFF Service (Port: 8093)
 
 Aggregates data from other services to provide a consolidated view for the frontend.
 
 - `GET /bff/dashboard/{userId}`: Fetches a user's profile, accounts, and recent transactions in a single call.
+  
+
+### 5. Logging Service (Port: 8096)
+
+A dedicated microservice consumes logs from a Kafka topic for centralized monitoring and auditing.
 
 ## Technology Stack
 
@@ -94,92 +99,21 @@ spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.S
 logging.kafka.topic=log-topic
 ```
 
-## Postman Endpoints for Testing
+## Postman Collections
 
-For all `POST` and `PUT` requests, set the `Content-Type` header to `application/json`.
+To simplify API testing, ready-made **Postman collections** are provided in the  
+[`postman-collections/`](./postman-collections/) folder.
 
-Note: The request/response bodies shown below are only examples to illustrate the structure. You will need to replace the placeholder IDs with the actual generated IDs when running the commands.
+### Available Collections
+- `User Service.postman_collection.json` → User Service endpoints  
+- `Account Service.postman_collection.json` → Account Service endpoints  
+- `Transaction Service.postman_collection.json` → Transaction Service endpoints  
+- `BFF Service.postman_collection.json` → BFF Service endpoints  
 
-### User Service (Port: 8090)
+### Import Instructions
+1. Open **Postman**.  
+2. Click **Import** → select the `.json` file(s) from the `postman-collections/` folder.  
+3. The collections will appear grouped by service.  
 
-- **Register User**: `POST` `http://localhost:8090/users/register`
-  **Body:**
-
-  ```json
-  {
-    "username": "john.doe",
-    "password": "securePassword123",
-    "email": "john.doe@example.com",
-    "firstName": "John",
-    "lastName": "Doe"
-  }
-  ```
-
-- **Login User**: `POST` `http://localhost:8090/users/login`
-  **Body:**
-
-  ```json
-  {
-    "username": "john.doe",
-    "password": "securePassword123"
-  }
-  ```
-
-- **Get User Profile**: `GET` `http://localhost:8090/users/{userId}/profile`
-
-### Account Service (Port: 8091)
-
-- **Create Account**: `POST` `http://localhost:8091/accounts`
-  **Body:**
-
-  ```json
-  {
-    "userId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
-    "accountType": "CREDIT",
-    "initialBalance": 100.0
-  }
-  ```
-
-- **Get Account Details**: `GET` `http://localhost:8091/accounts/{accountId}`
-- **Get User Accounts**: `GET` `http://localhost:8091/users/{userId}/accounts`
-
-- **Transfer Funds**: `PUT` `http://localhost:8091/accounts/transfer`
-  **Body:**
-  ```json
-  {
-    "fromAccountId": "f1e2d3c4-b5a6-9876-5432-10fedcba9876",
-    "toAccountId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
-    "amount": 100.0
-  }
-  ```
-
-### Transaction Service (Port: 8092)
-
-- **Initiate Transfer**: `POST` `http://localhost:8092/transactions/transfer/initiation`
-  **Body:**
-
-  ```json
-  {
-    "fromAccountId": "f1e2d3c4-b5a6-9876-5432-10fedcba9876",
-    "toAccountId": "g7h8i9j0-k1l2-3456-7890-abcdef123456",
-    "amount": 30.0,
-    "description": "Transfer to checking account"
-  }
-  ```
-
-- **Execute Transfer**: `POST` `http://localhost:8092/transactions/transfer/execution`
-  **Body:**
-
-  ```json
-  {
-    "transactionId": "t1r2a3n4-s5a6-7890-1234-567890abcdef"
-  }
-  ```
-
-- **Get Account Transactions**: `GET` `http://localhost:8092/accounts/{accountId}/transactions`
-
-### BFF Service (Port: 8093)
-
-- **Get Dashboard**: `GET` `http://localhost:8093/bff/dashboard/{userId}`
-
-
+Each collection includes example requests with placeholder IDs.  
+Replace these with actual IDs once your services are running.
