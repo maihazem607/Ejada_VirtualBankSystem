@@ -3,6 +3,7 @@ package com.BFFService.BFFService.applications.Services.BFFServiceImp;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,9 @@ import com.BFFService.BFFService.applications.Services.BFFService;
 import com.BFFService.BFFService.applications.dto.AccountDetailResponse;
 import com.BFFService.BFFService.applications.dto.AccountsListResponse;
 import com.BFFService.BFFService.applications.dto.ProfileResponse;
+import com.BFFService.BFFService.applications.dto.AccountTransactionResponse;
 import com.BFFService.BFFService.applications.dto.TransactionDetail;
+
 
 @Service
 public class BFFServiceImpl implements BFFService {
@@ -52,15 +55,15 @@ public class BFFServiceImpl implements BFFService {
             if (accounts.getAccounts() != null) {
                 for (AccountDetailResponse account : accounts.getAccounts()) {
                     // For each account, call Transaction Service
-                    ResponseEntity<TransactionDetail[]> transactionsResponse = restTemplate.exchange("http://localhost:8092/accounts/" + account.getAccountId() + "/transactions", HttpMethod.GET, null, TransactionDetail[].class);
+                    ResponseEntity<AccountTransactionResponse> transactionsResponse = restTemplate.exchange("http://localhost:8092/accounts/" + account.getAccountId() + "/transactions", HttpMethod.GET, null, AccountTransactionResponse.class);
                     if (transactionsResponse.getStatusCode() != HttpStatus.OK) {
                         throw new ServiceException();
                     }
-                    TransactionDetail[] accountTransactions = transactionsResponse.getBody();
+                    AccountTransactionResponse accountTransactions = transactionsResponse.getBody();
                     
                     List<DashboardResponse.TransactionSummary> transactionSummaries = new ArrayList<>();
-                    if (accountTransactions != null) {
-                        for (TransactionDetail transaction : accountTransactions) {
+                    if (accountTransactions != null && accountTransactions.getTransactionDetailList() != null) {
+                        for (TransactionDetail transaction : accountTransactions.getTransactionDetailList()) {
                             transactionSummaries.add(new DashboardResponse.TransactionSummary(
                                 transaction.getTransactionId(),
                                 transaction.getAmount(),
