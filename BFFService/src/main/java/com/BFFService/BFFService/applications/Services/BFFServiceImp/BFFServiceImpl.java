@@ -2,21 +2,21 @@ package com.BFFService.BFFService.applications.Services.BFFServiceImp;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 import com.BFFService.BFFService.apis.Resources.OutResponse.DashboardResponse;
 import com.BFFService.BFFService.applications.Exceptons.ServiceException;
 import com.BFFService.BFFService.applications.Services.BFFService;
 import com.BFFService.BFFService.applications.dto.AccountDetailResponse;
 import com.BFFService.BFFService.applications.dto.AccountsListResponse;
 import com.BFFService.BFFService.applications.dto.ProfileResponse;
-import com.BFFService.BFFService.applications.dto.AccountTransactionResponse;
 import com.BFFService.BFFService.applications.dto.TransactionDetail;
-
 
 @Service
 public class BFFServiceImpl implements BFFService {
@@ -52,15 +52,15 @@ public class BFFServiceImpl implements BFFService {
             if (accounts.getAccounts() != null) {
                 for (AccountDetailResponse account : accounts.getAccounts()) {
                     // For each account, call Transaction Service
-                    ResponseEntity<AccountTransactionResponse> transactionsResponse = restTemplate.exchange("http://localhost:8092/accounts/" + account.getAccountId() + "/transactions", HttpMethod.GET, null, AccountTransactionResponse.class);
+                    ResponseEntity<TransactionDetail[]> transactionsResponse = restTemplate.exchange("http://localhost:8092/accounts/" + account.getAccountId() + "/transactions", HttpMethod.GET, null, TransactionDetail[].class);
                     if (transactionsResponse.getStatusCode() != HttpStatus.OK) {
                         throw new ServiceException();
                     }
-                    AccountTransactionResponse accountTransactions = transactionsResponse.getBody();
+                    TransactionDetail[] accountTransactions = transactionsResponse.getBody();
                     
                     List<DashboardResponse.TransactionSummary> transactionSummaries = new ArrayList<>();
-                    if (accountTransactions != null && accountTransactions.getTransactionDetailList() != null) {
-                        for (TransactionDetail transaction : accountTransactions.getTransactionDetailList()) {
+                    if (accountTransactions != null) {
+                        for (TransactionDetail transaction : accountTransactions) {
                             transactionSummaries.add(new DashboardResponse.TransactionSummary(
                                 transaction.getTransactionId(),
                                 transaction.getAmount(),

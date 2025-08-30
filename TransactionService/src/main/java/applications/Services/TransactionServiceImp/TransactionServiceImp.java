@@ -47,13 +47,13 @@ public class TransactionServiceImp implements TransactionService {
     @Transactional
     public TransferResponse initiateTransfer(TransferInitiationRequest req) {
 
-       if (req.getFromAccountId() != null && req.getFromAccountId().equals(req.getToAccountId())) {
-           throw new InvalidTransferRequestException();
-       }
-
-       if (req.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
-           throw new InvalidTransferRequestException();
-       }
+//        if (req.getFromAccountId() != null && req.getFromAccountId().equals(req.getToAccountId())) {
+//            throw new InvalidTransferRequestException();
+//        }
+//
+//        if (req.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
+//            throw new InvalidTransferRequestException();
+//        }
 
         //Check if account exists and the from has sufficient funds
 
