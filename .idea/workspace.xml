@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55a5a84c-eb2c-4438-b4bd-c4672660b29d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/dto/AccountTransactionResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/dto/TransactionDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/dto/TransactionDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/Models/UserLoginEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/Repositories/UserLoginEventRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/Services/LoginServiceImp/LoginServiceImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/Services/LoginServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/Services/UserServiceImp/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/userService/src/main/java/com/UserServices/UserServices/applications/Services/UserServiceImp/UserServiceImp.java" afterDir="false" />
-    </list>
+    <list default="true" id="55a5a84c-eb2c-4438-b4bd-c4672660b29d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +36,11 @@
     "last_opened_file_path": "C:/Users/maiha/OneDrive/Documents/GitHub/Ejada_VirtualBankSystem/BFFService/src/main/java/com/BFFService/BFFService/applications/dto"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maiha\OneDrive\Documents\GitHub\Ejada_VirtualBankSystem\BFFService\src\main\java\com\BFFService\BFFService\applications\dto" />
+    </key>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="55a5a84c-eb2c-4438-b4bd-c4672660b29d" name="Changes" comment="" />
