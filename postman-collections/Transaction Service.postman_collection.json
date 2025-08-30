@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "b9f1b3d9-355a-4ae4-a512-acf12cbba571",
+		"name": "Transaction Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47472683",
+		"_collection_link": "https://maihazem607-6992368.postman.co/workspace/Mai-Hazem's-Workspace~e2959c8a-3afb-4874-89d0-b493b0bc64f2/collection/47472683-b9f1b3d9-355a-4ae4-a512-acf12cbba571?action=share&source=collection_link&creator=47472683"
+	},
+	"item": [
+		{
+			"name": "Initiation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fromAccountId\": \"ead4481e-5030-407f-87b7-429b886cc15f\",\r\n  \"toAccountId\": \"24d08852-b1bc-4f5e-9782-475ebd339202\",\r\n  \"amount\": 200.0,\r\n  \"description\": \"Transfer to checking account\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8092/transactions/transfer/initiation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"transactions",
+						"transfer",
+						"initiation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "execution",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"transactionId\": \"24532ce9-7b30-4c7f-8e34-b90818e8d6db\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8092/transactions/transfer/execution",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"transactions",
+						"transfer",
+						"execution"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/accounts/24d08852-b1bc-4f5e-9782-475ebd339202/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"accounts",
+						"24d08852-b1bc-4f5e-9782-475ebd339202",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "afa672bc-58b7-4e1e-8b60-9ab773ef7755",
+		"name": "BFF Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47472683",
+		"_collection_link": "https://maihazem607-6992368.postman.co/workspace/Mai-Hazem's-Workspace~e2959c8a-3afb-4874-89d0-b493b0bc64f2/collection/47472683-afa672bc-58b7-4e1e-8b60-9ab773ef7755?action=share&source=collection_link&creator=47472683"
+	},
+	"item": [
+		{
+			"name": "dashboard",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8093/bff/dashboard/172ae672-de3b-4ca4-b7f0-8ad5cc54f09e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"bff",
+						"dashboard",
+						"172ae672-de3b-4ca4-b7f0-8ad5cc54f09e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

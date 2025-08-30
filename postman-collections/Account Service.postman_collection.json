@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "f9aeeef5-7c82-4b30-9525-28bd2bfa1176",
+		"name": "Account Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47472683",
+		"_collection_link": "https://maihazem607-6992368.postman.co/workspace/Mai-Hazem's-Workspace~e2959c8a-3afb-4874-89d0-b493b0bc64f2/collection/47472683-f9aeeef5-7c82-4b30-9525-28bd2bfa1176?action=share&source=collection_link&creator=47472683"
+	},
+	"item": [
+		{
+			"name": "Create account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"172ae672-de3b-4ca4-b7f0-8ad5cc54f09e\",\r\n  \"accountType\": \"DEBIT\",\r\n  \"initialBalance\": 1000.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8091/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account Details",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "user accounts",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "transfer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fromAccountId\": \"ead4481e-5030-407f-87b7-429b886cc15f\",\r\n  \"toAccountId\": \"24d08852-b1bc-4f5e-9782-475ebd339202\",\r\n  \"amount\": 100.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8091/accounts/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"accounts",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
