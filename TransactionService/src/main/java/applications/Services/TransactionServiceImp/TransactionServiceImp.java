@@ -58,15 +58,18 @@ public class TransactionServiceImp implements TransactionService {
         //Check if account exists and the from has sufficient funds
 
         try {
-           restTemplate.getForObject("http://localhost:8091/accounts/" + req.getFromAccountId(), AccountDetailResponse.class);
-           restTemplate.getForObject("http://localhost:8091/accounts/" + req.getToAccountId(), AccountDetailResponse.class);
-        
+            AccountDetailResponse fromAccount = restTemplate.getForObject("http://localhost:8091/accounts/" + req.getFromAccountId(), AccountDetailResponse.class);
+            AccountDetailResponse toAccount = restTemplate.getForObject("http://localhost:8091/accounts/" + req.getToAccountId(), AccountDetailResponse.class);
+
+           // if account is null or status was inactive throw exception
+            if (fromAccount == null || toAccount == null ||
+                !"ACTIVE".equals(fromAccount.getStatus()) || !"ACTIVE".equals(toAccount.getStatus())) {
+                throw new InvalidTransferRequestException();
+            }
         } catch (HttpClientErrorException.NotFound e) {
             throw new InvalidTransferRequestException();
         }
         
-
-
         Transaction transaction = Transaction.initiated(
                 UUID.fromString(req.getFromAccountId()),
                 UUID.fromString(req.getToAccountId()),

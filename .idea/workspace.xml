@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55a5a84c-eb2c-4438-b4bd-c4672660b29d" name="Changes" comment="" />
+    <list default="true" id="55a5a84c-eb2c-4438-b4bd-c4672660b29d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logging/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Logging/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TransactionService/src/main/java/applications/Services/TransactionServiceImp/TransactionServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/TransactionService/src/main/java/applications/Services/TransactionServiceImp/TransactionServiceImp.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +19,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="31zSsG3HaQdUTfOlwA9vyE9mrK2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,6 +32,7 @@
   "keyToString": {
     "Application.AccountServiceApplication.executor": "Run",
     "Application.BFFServiceApplication.executor": "Run",
+    "Application.LoggingApplication.executor": "Run",
     "Application.TransactionServiceApplication.executor": "Run",
     "Application.UserServicesApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
