@@ -1,0 +1,54 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-AccountServiceApplication<com.AccountService-AccountService>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.AccountService.AccountService.AccountServiceApplication",
+      "projectName": "com.AccountService-AccountService",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-TransactionServiceApplication<com.TransactionService-TransactionService>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.TransactionService.TransactionService.TransactionServiceApplication",
+      "projectName": "com.TransactionService-TransactionService",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-BFFServiceApplication<com.UserServices-UserServices>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.BFFService.BFFService.BFFServiceApplication",
+      "projectName": "com.UserServices-UserServices",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-LoggingApplication<Logging>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.Logging.Logging.LoggingApplication",
+      "projectName": "Logging",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-UserServicesApplication<UserServices>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.UserServices.UserServices.UserServicesApplication",
+      "projectName": "UserServices",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
