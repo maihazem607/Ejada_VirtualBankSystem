@@ -58,21 +58,18 @@ public class TransactionServiceImp implements TransactionService {
         //Check if account exists and the from has sufficient funds
 
         try {
-            AccountDetailResponse fromAccount = restTemplate.getForObject("http://localhost:8091/accounts/" + req.getFromAccountId(), AccountDetailResponse.class);
-            AccountDetailResponse toAccount = restTemplate.getForObject("http://localhost:8091/accounts/" + req.getToAccountId(), AccountDetailResponse.class);
-
-           // if account is null or status was inactive throw exception
-            if (fromAccount == null || toAccount == null ||
-                !"ACTIVE".equals(fromAccount.getStatus()) || !"ACTIVE".equals(toAccount.getStatus())) {
-                throw new InvalidTransferRequestException();
-            }
+           restTemplate.getForObject("http://localhost:8091/accounts/" + req.getFromAccountId(), AccountDetailResponse.class);
+           restTemplate.getForObject("http://localhost:8091/accounts/" + req.getToAccountId(), AccountDetailResponse.class);
+        
         } catch (HttpClientErrorException.NotFound e) {
             throw new InvalidTransferRequestException();
         }
         
+
+
         Transaction transaction = Transaction.initiated(
-                UUID.fromString(req.getFromAccountId()),
-                UUID.fromString(req.getToAccountId()),
+                req.getFromAccountId(),
+               req.getToAccountId(),
                 req.getAmount(),
                 req.getDescription()
         );
@@ -87,7 +84,7 @@ public class TransactionServiceImp implements TransactionService {
     public TransferResponse executeTransfer(TransferExecutionRequest req) {
 
         //Check Transaction ID exists
-        Transaction transaction = transactions.findById(UUID.fromString(req.getTransactionId()))
+        Transaction transaction = transactions.findById(req.getTransactionId())
                 .orElseThrow(TransactionNotFoundException::new);
 
         //Check if Transaction is in INITIATED status
@@ -131,8 +128,8 @@ public class TransactionServiceImp implements TransactionService {
 
     @Override
     public List<TransactionDetail> getAccountTransactions(String accountId) {
-        UUID accountUuid = UUID.fromString(accountId);
-        List<Transaction> accountTransactions = transactions.findByFromAccountIdOrToAccountId(accountUuid, accountUuid);
+
+        List<Transaction> accountTransactions = transactions.findByFromAccountIdOrToAccountId(accountId, accountId);
 
         if (accountTransactions.isEmpty()) {
             throw new NoTransactionsFound(accountId);
@@ -145,7 +142,7 @@ public class TransactionServiceImp implements TransactionService {
 
                     if (transaction.getStatus() == TransactionStatus.FAILED) {
                         deliveryStatus = "FAILED";
-                    } else if (transaction.getFromAccountId().equals(accountUuid)) {
+                    } else if (transaction.getFromAccountId().equals(accountId)) {
                         // Outgoing transaction
                         amount = amount.negate();
                         deliveryStatus = "SENT";

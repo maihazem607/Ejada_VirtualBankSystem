@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.UUID;
 import applications.enums.TransactionStatus;
+import org.apache.kafka.common.serialization.Serdes;
 
 @Data
 @NoArgsConstructor
@@ -18,15 +19,15 @@ import applications.enums.TransactionStatus;
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
-    private UUID id;
+    private String id;
 
     @Column(name = "from_account_id")
-    private UUID fromAccountId;
+    private String fromAccountId;
 
     @Column(name = "to_account_id")
-    private UUID toAccountId;
+    private String toAccountId;
 
     @Column(precision = 15, scale = 2, columnDefinition = "DECIMAL(15,2) default 0.00", nullable = false)
     private BigDecimal amount;
@@ -41,7 +42,7 @@ public class Transaction {
     private Timestamp timestamp;
 
 
-    public static Transaction initiated(UUID fromId, UUID toId, BigDecimal amount, String description) {
+    public static Transaction initiated(String fromId, String toId, BigDecimal amount, String description) {
         Transaction t = new Transaction();
 
         t.fromAccountId = fromId;
@@ -55,7 +56,7 @@ public class Transaction {
 
     @PrePersist
     void onInsert() {
-        if (this.id == null) this.id = UUID.randomUUID();
+        if (this.id == null) this.id = String.valueOf(UUID.randomUUID());
         this.timestamp = Timestamp.from(Instant.now());
     }
 

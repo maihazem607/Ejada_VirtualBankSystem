@@ -10,7 +10,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfileResponse {
-        private UUID userId;
+        private String userId;
         private String username;
         private String email;
         private String firstName;

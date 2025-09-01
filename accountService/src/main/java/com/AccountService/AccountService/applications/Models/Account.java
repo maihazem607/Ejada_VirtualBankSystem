@@ -25,10 +25,10 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
 
     @Column(nullable = false)
-    private UUID userId;
+    private String userId;
 
     @Column(unique = true, nullable = false, length = 20)
     private String accountNumber;
@@ -55,7 +55,7 @@ public class Account {
     private void generateAccountNumber() {
         if (accountNumber == null) {
             // Use the unique UUID to generate a base for the account number
-            long val = Math.abs(id.getMostSignificantBits());
+            long val = Math.abs(UUID.fromString(id).getMostSignificantBits());
             String base = String.valueOf(val);
 
             // Pad with random digits to ensure it's 20 digits long

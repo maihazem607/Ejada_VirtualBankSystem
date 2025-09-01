@@ -10,6 +10,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfileRequest {
-    private UUID userId;
+    private String userId;
 
 }

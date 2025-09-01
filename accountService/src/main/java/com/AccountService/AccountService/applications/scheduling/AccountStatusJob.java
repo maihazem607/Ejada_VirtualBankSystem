@@ -2,6 +2,7 @@ package com.AccountService.AccountService.applications.scheduling;
 
 import com.AccountService.AccountService.applications.Models.Account;
 import com.AccountService.AccountService.applications.Repositories.AccountRepository;
+import com.AccountService.AccountService.applications.dto.AccountTransactionResponse;
 import com.AccountService.AccountService.applications.dto.TransactionResponse;
 import com.AccountService.AccountService.applications.enums.AccountStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,21 +30,21 @@ public class AccountStatusJob {
 
     private static final String TRANSACTION_SERVICE_URL = "http://localhost:8092/accounts/{accountId}/transactions";
 
-    @Scheduled(cron = "0 0 */1 * * *")
+    @Scheduled(cron = "0 */5 * ? * *")
     public void updateAccountStatus() {
         List<Account> activeAccounts = accountRepository.findByStatus(AccountStatus.ACTIVE);
 
         for (Account account : activeAccounts) {
             try {
-                ResponseEntity<List<TransactionResponse>> response = restTemplate.exchange(
+                ResponseEntity<AccountTransactionResponse> response = restTemplate.exchange(
                         TRANSACTION_SERVICE_URL,
                         HttpMethod.GET,
                         null,
-                        new ParameterizedTypeReference<List<TransactionResponse>>() {},
+                        new ParameterizedTypeReference<AccountTransactionResponse>() {},
                         account.getId()
                 );
 
-                List<TransactionResponse> transactions = response.getBody();
+                List<TransactionResponse> transactions = response.getBody().getTransactionDetailList();
 
                 if (transactions == null || transactions.isEmpty()) {
                     // No transactions, inactivate account
@@ -72,4 +73,3 @@ public class AccountStatusJob {
         accountRepository.save(account);
     }
 }
-

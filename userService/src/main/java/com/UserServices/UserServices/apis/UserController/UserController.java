@@ -35,7 +35,7 @@ public class UserController {
 
 
     @GetMapping("/{userId}/profile")
-    public ResponseEntity<ProfileResponse> getProfile(@PathVariable UUID userId) {
+    public ResponseEntity<ProfileResponse> getProfile(@PathVariable String userId) {
         ProfileRequest R =new ProfileRequest(userId);
         requestLoggerProducer.log(R.toString(),"request");
         ProfileResponse profileResponse=userService.getProfile(R);

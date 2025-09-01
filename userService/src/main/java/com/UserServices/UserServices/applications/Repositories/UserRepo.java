@@ -8,11 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface UserRepo extends JpaRepository<User, java.util.UUID> {
+public interface UserRepo extends JpaRepository<User, String> {
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
     Optional<User> findByUsername(String username);
-    boolean existsById(UUID userId);
+    boolean existsById(String userId);
 
 }
 

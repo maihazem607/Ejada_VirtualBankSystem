@@ -7,12 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.UUID;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, UUID> {
+public interface AccountRepository extends JpaRepository<Account, String> {
 
-    List<Account> findByUserId(UUID userUUID);
+    List<Account> findByUserId(String userUUID);
 
     List<Account> findByStatusAndUpdatedAtBefore(AccountStatus status, Timestamp timestamp);
 

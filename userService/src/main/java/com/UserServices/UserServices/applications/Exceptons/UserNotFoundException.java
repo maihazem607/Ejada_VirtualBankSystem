@@ -10,7 +10,7 @@ public class UserNotFoundException extends ApplicationException {
         super("USER_NOT_FOUND", HttpStatus.NOT_FOUND, "User with ID " + userId + " not found.");
     }
 
-    public UserNotFoundException() {
+    public UserNotFoundException(String userId) {
         super("USER_NOT_FOUND", HttpStatus.NOT_FOUND, "User not found.");
     }
 

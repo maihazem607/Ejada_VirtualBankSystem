@@ -10,7 +10,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginResponse {
-    private UUID userId;
+    private String userId;
     private String username;
 
 }

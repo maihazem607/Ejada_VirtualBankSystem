@@ -2,7 +2,6 @@ package com.AccountService.AccountService.apis.Resources.InRequest;
 
 import java.math.BigDecimal;
 
-import com.AccountService.AccountService.apis.validation.ValidUUID;
 import com.AccountService.AccountService.apis.validation.ValueOfEnum;
 import com.AccountService.AccountService.applications.enums.AccountType;
 
@@ -17,7 +16,6 @@ public class AccountCreationRequest {
 
     @NotNull(message = "userId cannot be empty")
     @NotBlank(message = "userId cannot be empty")
-    @ValidUUID
     private String userId;
 
     @NotNull(message = "Invalid account type or initial balance")

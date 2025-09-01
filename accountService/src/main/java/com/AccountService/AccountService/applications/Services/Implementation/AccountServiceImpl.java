@@ -35,8 +35,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public AccountTransferResponse transferAmount(AccountTransferRequest request){
 
-        UUID fromAccountId = UUID.fromString(request.getFromAccountId());
-        UUID toAccountId = UUID.fromString(request.getToAccountId());
+        String fromAccountId = request.getFromAccountId();
+        String toAccountId = request.getToAccountId();
 
         //Check if accounts exist
         Account fromAccount = accountRepo.findById(fromAccountId).orElseThrow(() -> new AccountNotFoundException(fromAccountId));
@@ -60,16 +60,14 @@ public class AccountServiceImpl implements AccountService {
         String userId = request.getUserId();
         String url = "http://localhost:8090/users/" + userId + "/profile";
 
-        //Check if user exists with this ID
-        UUID userUUID = UUID.fromString(userId);
         try {
             restTemplate.getForObject(url, UserProfileResponse.class);
         } catch (HttpClientErrorException.NotFound e) {
-            throw new UserNotFoundException(userUUID);
+            throw new UserNotFoundException(userId);
         }
 
         Account account = new Account();
-        account.setUserId(UUID.fromString(userId));
+        account.setUserId(userId);
         account.setAccountType(AccountType.valueOf(request.getAccountType()));
         account.setBalance(request.getInitialBalance());
         account.setStatus(AccountStatus.ACTIVE);
@@ -83,10 +81,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDetailResponse getAccountDetails(String accountId) {
-        UUID accountUUID = UUID.fromString(accountId);
+
 
         //Check if account exists
-        Account account = accountRepo.findById(accountUUID).orElseThrow(() -> new AccountNotFoundException(accountUUID));
+        Account account = accountRepo.findById(accountId).orElseThrow(() -> new AccountNotFoundException(accountId));
         return new AccountDetailResponse(account.getId().toString(),
                 account.getAccountNumber().toString(),
                 account.getBalance(),
@@ -97,18 +95,16 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountsListResponse listUserAccounts(String userId) {
-           
-            UUID userUUID = UUID.fromString(userId);
 
             //Check if user exists with this ID
             String url = "http://localhost:8090/users/" + userId + "/profile";
             try {
                 restTemplate.getForObject(url, UserProfileResponse.class);
             } catch (HttpClientErrorException.NotFound e) {
-                throw new UserNotFoundException(userUUID);
+                throw new UserNotFoundException(userId);
             }
     
-            List<Account> accounts = accountRepo.findByUserId(userUUID);
+            List<Account> accounts = accountRepo.findByUserId(userId);
 
             //Check if the user has any accounts
             if (!accounts.isEmpty()) {
@@ -122,6 +118,6 @@ public class AccountServiceImpl implements AccountService {
                )).toList());
                return accountResponses;
             }
-         throw new NoAccountsFoundException(userUUID);
+         throw new NoAccountsFoundException(userId);
     }
 }

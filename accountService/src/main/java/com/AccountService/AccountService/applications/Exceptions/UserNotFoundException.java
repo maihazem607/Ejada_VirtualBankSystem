@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class UserNotFoundException extends ApplicationException {
 
-    public UserNotFoundException(UUID userId) {
+    public UserNotFoundException(String userId) {
         super("USER_NOT_FOUND", HttpStatus.NOT_FOUND, "User with ID " + userId + " not found.");
     }
 
