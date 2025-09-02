@@ -30,7 +30,8 @@ public class AccountStatusJob {
 
     private static final String TRANSACTION_SERVICE_URL = "http://localhost:8092/accounts/{accountId}/transactions";
 
-    @Scheduled(cron = "0 */5 * ? * *")
+
+    @Scheduled(cron = "0 0 */1 * * *")
     public void updateAccountStatus() {
         List<Account> activeAccounts = accountRepository.findByStatus(AccountStatus.ACTIVE);
 

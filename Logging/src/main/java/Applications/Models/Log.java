@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table (name ="logging_service_db")
+@Table (name ="logging_service")
 @Getter
 @Setter
 public class Log {

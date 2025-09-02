@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55a5a84c-eb2c-4438-b4bd-c4672660b29d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BFFService/src/main/java/com/BFFService/BFFService/applications/Services/BFFServiceImp/BFFServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logging/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Logging/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TransactionService/src/main/java/applications/Services/TransactionServiceImp/TransactionServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/TransactionService/src/main/java/applications/Services/TransactionServiceImp/TransactionServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,21 +24,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AccountServiceApplication.executor": "Run",
-    "Application.BFFServiceApplication.executor": "Run",
-    "Application.LoggingApplication.executor": "Run",
-    "Application.TransactionServiceApplication.executor": "Run",
-    "Application.UserServicesApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/maiha/OneDrive/Documents/GitHub/Ejada_VirtualBankSystem/BFFService/src/main/java/com/BFFService/BFFService/applications/dto"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AccountServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BFFServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LoggingApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TransactionServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserServicesApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maiha/OneDrive/Documents/GitHub/Ejada_VirtualBankSystem/BFFService/src/main/java/com/BFFService/BFFService/applications/dto&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\maiha\OneDrive\Documents\GitHub\Ejada_VirtualBankSystem\BFFService\src\main\java\com\BFFService\BFFService\applications\dto" />

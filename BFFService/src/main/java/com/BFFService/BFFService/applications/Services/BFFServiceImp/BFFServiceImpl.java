@@ -1,4 +1,4 @@
-package com.BFFService.BFFService.applications.Services;
+package com.BFFService.BFFService.applications.Services.BFFServiceImp;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.BFFService.BFFService.apis.Resources.OutResponse.DashboardResponse;
 import com.BFFService.BFFService.applications.Exceptons.ServiceException;
+import com.BFFService.BFFService.applications.Services.BFFService;
 import com.BFFService.BFFService.applications.dto.AccountDetailResponse;
 import com.BFFService.BFFService.applications.dto.AccountTransactionResponse;
 import com.BFFService.BFFService.applications.dto.AccountsListResponse;
